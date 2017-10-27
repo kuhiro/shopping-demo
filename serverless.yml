@@ -1,0 +1,247 @@
+
+service: aws-nodejs
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: shop
+  region: us-east-1
+  memorySize: 128
+  timeout: 300
+  iamRoleStatements:
+    $ref: ./iamRoleStatements.json
+  environment:
+    CUSTOMER_NAME: shop
+
+functions:
+  js_helper:
+    handler: js_helper.Go
+    events:
+      - http:
+          path: js_helper
+          method: get
+
+  home:
+    handler: home.Go
+    events:
+      - http:
+          path: home
+          method: get
+
+  register:
+    handler: register.Go
+    events:
+      - http:
+          path: register
+          method: get
+
+  login:
+    handler: login.Go
+    events:
+      - http:
+          path: login
+          method: get
+
+  member_info:
+    handler: member_info.Go
+    events:
+      - http:
+          path: member_info
+          method: get
+
+  edit_cart:
+    handler: edit_cart.Go
+    events:
+      - http:
+          path: edit_cart
+          method: get
+
+  edit_favorite:
+    handler: edit_favorite.Go
+    events:
+      - http:
+          path: edit_favorite
+          method: get
+
+  edit_top_seller:
+    handler: edit_top_seller.Go
+    events:
+      - http:
+          path: edit_top_seller
+          method: get
+
+  edit_manufacturer:
+    handler: edit_manufacturer.Go
+    events:
+      - http:
+          path: edit_manufacturer
+          method: get
+
+  edit_category:
+    handler: edit_category.Go
+    events:
+      - http:
+          path: edit_category
+          method: get
+
+  edit_product:
+    handler: edit_product.Go
+    events:
+      - http:
+          path: edit_product
+          method: get
+
+  show_cart:
+    handler: show_cart.Go
+    events:
+      - http:
+          path: show_cart
+          method: get
+
+  show_categories:
+    handler: show_categories.Go
+    events:
+      - http:
+          path: show_categories
+          method: get
+
+  show_category:
+    handler: show_category.Go
+    events:
+      - http:
+          path: show_category
+          method: get
+
+  show_category_summary:
+    handler: show_category_summary.Go
+    events:
+      - http:
+          path: show_category_summary
+          method: get
+
+  show_duo_category:
+    handler: show_duo_category.Go
+    events:
+      - http:
+          path: show_duo_category
+          method: get
+
+  show_duo_manufacturer:
+    handler: show_duo_manufacturer.Go
+    events:
+      - http:
+          path: show_duo_manufacturer
+          method: get
+
+  show_favorites:
+    handler: show_favorites.Go
+    events:
+      - http:
+          path: show_favorites
+          method: get
+
+  show_manufacturers:
+    handler: show_manufacturers.Go
+    events:
+      - http:
+          path: show_manufacturers
+          method: get
+
+  show_manufacturer:
+    handler: show_manufacturer.Go
+    events:
+      - http:
+          path: show_manufacturer
+          method: get
+
+  show_manufacturer_summary:
+    handler: show_manufacturer_summary.Go
+    events:
+      - http:
+          path: show_manufacturer_summary
+          method: get
+
+  show_product_detail:
+    handler: show_product_detail.Go
+    events:
+      - http:
+          path: show_product_detail
+          method: get
+
+  show_product_summary:
+    handler: show_product_summary.Go
+    events:
+      - http:
+          path: show_product_summary
+          method: get
+
+  show_purchases:
+    handler: show_purchases.Go
+    events:
+      - http:
+          path: show_purchases
+          method: get
+
+  show_purchase:
+    handler: show_purchase.Go
+    events:
+      - http:
+          path: show_purchase
+          method: get
+
+  show_recent:
+    handler: show_recent.Go
+    events:
+      - http:
+          path: show_recent
+          method: get
+
+  show_recommended:
+    handler: show_recommended.Go
+    events:
+      - http:
+          path: show_recommended
+          method: get
+
+  buy_cart:
+    handler: buy_cart.Go
+    events:
+      - http:
+          path: buy_cart
+          method: get
+
+  buy_product:
+    handler: buy_product.Go
+    events:
+      - http:
+          path: buy_product
+          method: get
+
+  top_categories:
+    handler: top_categories.Go
+    events:
+      - http:
+          path: top_categories
+          method: get
+
+  touch_product:
+    handler: touch_product.Go
+    events:
+      - http:
+          path: touch_product
+          method: get
+
+  top_manufacturers:
+    handler: top_manufacturers.Go
+    events:
+      - http:
+          path: top_manufacturers
+          method: get
+
+  #hello_world:
+    #handler: hello_world.Go
+    #events:
+      #- http:
+          #path: hello_world
+          #method: get
+

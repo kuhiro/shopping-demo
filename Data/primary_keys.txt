@@ -1,0 +1,12 @@
+  users              name
+  merchants          name
+  categories         name
+  products           id
+  manufacturers      name
+  sessions           id
+  recently_viewed    username
+  recommended        username
+  favorites          username
+  cart               username
+  purchases          username
+  globals            key
