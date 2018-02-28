@@ -1,8 +1,8 @@
 #!/bin/bash
 
-SID="$1"
+KCLI="../../kuhiro-client.js"
 
 cat Data/primary_keys.txt | while read name val; do
-  curl -o - "http://localhost:9999/edit_table?name=${name}&value=${val}&session=${SID}";
+  echo "set table ${name} primary_key=${val}" | node $KCLI
 done
 

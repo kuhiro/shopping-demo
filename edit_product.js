@@ -45,6 +45,16 @@ function record_product_id(pid, next) {
   Data.update(params, next);
 }
 
+function initialize_product_comments(pid, next) {
+  var tname   = 'comments';
+  var updates = [];
+  updates.push({operation : "SET", values : ["entries", []]});
+  var params  = {TableName : tname,
+                 Key       : {productid : pid},
+                 Updates   : updates};
+  Data.update(params, next);
+}
+
 function perist_product_record(pid, event, next) {
   var pname  = Utils.DecodeUri(event, 'name');
   var xname  = Utils.DecodeUri(event, 'manufacturer');
@@ -59,7 +69,9 @@ function perist_product_record(pid, event, next) {
                 category     : cat,
                 image_src    : isrc,
                 price        : price,
-                quantity     : num};
+                quantity     : num,
+                rate_count   : 0,
+                rate_total   : 0};
   var params = {TableName    : tname,
                 Item         : pdata};
   Data.put(params, function(serr, sres) {
@@ -77,7 +89,13 @@ function persist_product(pid, event, next) {
       record_product_id(pid, function(serr, sres) {
         if (serr) next(serr, null);
         else {
-          perist_product_record(pid, event, next);
+          initialize_product_comments(pid, function(serr, sres) {
+            if (serr) next(serr, null);
+            else {
+              perist_product_record(pid, event, next);
+              //TODO evict products.name -> will be cached on read
+            }
+          });
         }
       });
     }

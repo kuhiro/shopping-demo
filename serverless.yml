@@ -14,13 +14,6 @@ provider:
     CUSTOMER_NAME: shop
 
 functions:
-  js_helper:
-    handler: js_helper.Go
-    events:
-      - http:
-          path: js_helper
-          method: get
-
   home:
     handler: home.Go
     events:
@@ -49,25 +42,25 @@ functions:
           path: member_info
           method: get
 
-  edit_cart:
-    handler: edit_cart.Go
+  edit_asset:
+    handler: edit_asset.Go
     events:
       - http:
-          path: edit_cart
+          path: edit_asset
           method: get
 
-  edit_favorite:
-    handler: edit_favorite.Go
+  add_comment:
+    handler: add_comment.Go
     events:
       - http:
-          path: edit_favorite
+          path: add_comment
           method: get
 
-  edit_top_seller:
-    handler: edit_top_seller.Go
+  rate_product:
+    handler: rate_product.Go
     events:
       - http:
-          path: edit_top_seller
+          path: rate_product
           method: get
 
   edit_manufacturer:
@@ -161,6 +154,13 @@ functions:
           path: show_manufacturer_summary
           method: get
 
+  show_product_comments:
+    handler: show_product_comments.Go
+    events:
+      - http:
+          path: show_product_comments
+          method: get
+
   show_product_detail:
     handler: show_product_detail.Go
     events:
@@ -237,11 +237,4 @@ functions:
       - http:
           path: top_manufacturers
           method: get
-
-  #hello_world:
-    #handler: hello_world.Go
-    #events:
-      #- http:
-          #path: hello_world
-          #method: get
 

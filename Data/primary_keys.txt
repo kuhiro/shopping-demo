@@ -2,6 +2,7 @@
   merchants          name
   categories         name
   products           id
+  comments           productid
   manufacturers      name
   sessions           id
   recently_viewed    username
